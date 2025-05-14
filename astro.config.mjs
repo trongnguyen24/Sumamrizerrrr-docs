@@ -3,11 +3,21 @@ import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
 import starlightThemeRapide from 'starlight-theme-rapide'
 
+import tailwindcss from '@tailwindcss/vite'
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
       title: 'Sumarizzerrrr',
+      logo: {
+        src: './src/assets/logo.svg',
+        replacesTitle: true,
+      },
+      customCss: [
+        // Path to your Tailwind base styles:
+        './src/styles/global.css',
+      ],
       social: [
         {
           icon: 'github',
@@ -35,4 +45,8 @@ export default defineConfig({
       ],
     }),
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 })
