@@ -1,6 +1,11 @@
-@import 'tailwindcss';
+@layer base, starlight, rapide, theme, components, utilities,  my-overrides;
 @import '@astrojs/starlight-tailwind';
-@layer starlight, rapide, my-overrides;
+@import 'tailwindcss';
+@import '@fontsource-variable/geist-mono';
+
+.font-geist {
+  font-family: 'Geist Mono Variable', monospace;
+}
 
 @layer my-overrides {
   :root[data-theme='dark'] {
@@ -159,6 +164,19 @@
     --sl-rapide-ec-marker-border-color: oklch(62% 0.002 var(--sl-hue-base));
   }
 }
-/**
-   * Common
-   */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0.5rem;
+}
+
+.top-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 7px,
+    oklch(0.3 0.015 268) 1px,
+    oklch(0.3 0.015 268) 8px
+  );
+  border-top: 1px solid oklch(0.3 0.015 268);
+  border-bottom: 1px solid oklch(0.3 0.015 268);
+}

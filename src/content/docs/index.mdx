@@ -5,10 +5,14 @@ template: splash
 ---
 
 import Hero from '../../components/Hero.astro'
+import Section1 from '../../components/Section1.astro'
 import '../../styles/global.css'
 import { Card, CardGrid } from '@astrojs/starlight/components'
 
+<div class="flex flex-col ">
 <Hero
-  title="Welcome to Starlight"
-  description="Get started building your docs site with Starlight."
+
 />
+
+<Section1 />
+</div>

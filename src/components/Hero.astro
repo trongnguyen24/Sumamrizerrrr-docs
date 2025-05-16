@@ -1,21 +1,66 @@
 ---
-const { title, description } = Astro.props;
+
 ---
 
+<div
+  class="h-screen flex flex-col gap-8 items-center justify-center text-center bg-[url(/bg.webp)] bg-cover bg-no-repeat bg-center"
+>
+  <h1 class="text-6xl/16 font-bold text-white m-0">
+    Smart AI Summaries<br />to Save Your Time
+  </h1>
+  <p class="text-lg max-w-2xl md:text-xl text-gray-400 m-0">
+    Powerful AI extension for summarize YouTube videos, Reddit threads, Facebook
+    posts, e-commerce reviews, news articles, and much more.
+  </p>
+  <div>
+    <div class="flex flex-col md:flex-row gap-4">
+      <a
+        href="#"
+        class="flex gap-1 justify-center items-center border border-gray-200 border-t-gray-50 bg-gray-200 text-gray-900 py-2 px-6 pl-5 rounded-full shadow-lg hover:bg-white hover:border-white transition duration-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M21.436 8.695h-6.815a4.21 4.21 0 0 1 .828 5.735l-4.217 7.536c.256.02.512.035.769.034c5.52-.005 9.995-4.479 10-10a9.9 9.9 0 0 0-.565-3.305"
+          ></path>
+          <path
+            fill="currentColor"
+            d="M11.986 16.22a4.2 4.2 0 0 1-2.095-.563a4.24 4.24 0 0 1-1.547-1.547a4 4 0 0 1-.221-.448L3.808 6.278a10 10 0 0 0-1.728 4.47a9.993 9.993 0 0 0 8.2 11.098l3.33-5.948a4.2 4.2 0 0 1-1.624.321"
+          ></path>
+          <path
+            fill="currentColor"
+            d="M9.889 8.347a4.22 4.22 0 0 1 2.565-.541h8.616a10 10 0 0 0-2.959-3.72C13.87.808 7.828 1.474 4.392 5.516l3.434 5.877c.18-1.233.9-2.375 2.063-3.046"
+          ></path>
+          <path
+            fill="currentColor"
+            d="M9.073 10.313a3.378 3.378 0 1 0 4.617-1.236a3.4 3.4 0 0 0-1.68-.452h-.002a3.37 3.37 0 0 0-2.935 1.688"
+          ></path>
+        </svg>
+        Install now
+      </a>
+      <a
+        href="#"
+        class="bg-gray-800 text-white border border-gray-700 py-2 px-6 rounded-full shadow-lg hover:bg-gray-700 hover:border-gray-300 transition duration-300"
+      >
+        Explore Features
+      </a>
+    </div>
+    <p class="font-geist text-xs text-gray-500">
+      Free and open source, no sign-up required.
+    </p>
+  </div>
+</div>
+
 <style is:global>
-  .header > div > div.sl-flex.print\:hidden {
-    display: none;
+  :root {
+    color-scheme: dark;
   }
-  header > div > div.sl-hidden.md\:sl-flex.print\:hidden.right-group {
-    justify-content: right;
+  body {
+    background-color: #070707;
   }
 </style>
-
-<div class="h-screen flex flex-col items-center justify-center text-center bg-[url(/bg.webp)] bg-cover bg-no-repeat bg-center">
-  <h1>
-    {title}
-  </h1>
-  <p>
-    {description}
-  </p>
-</div>
