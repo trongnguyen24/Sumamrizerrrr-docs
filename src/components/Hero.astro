@@ -1,12 +1,21 @@
+---
+const { title, description } = Astro.props;
+---
+
 <style is:global>
-      h1 { color: red }
-  body {
-    background-color: lightblue; /* Style ví dụ */
+  .header > div > div.sl-flex.print\:hidden {
+    display: none;
+  }
+  header > div > div.sl-hidden.md\:sl-flex.print\:hidden.right-group {
+    justify-content: right;
   }
 </style>
 
-<div>
+<div class="h-screen flex flex-col items-center justify-center text-center bg-[url(/bg.webp)] bg-cover bg-no-repeat bg-center">
   <h1>
-    This header will be red!
+    {title}
   </h1>
+  <p>
+    {description}
+  </p>
 </div>

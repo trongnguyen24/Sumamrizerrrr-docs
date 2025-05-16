@@ -11,7 +11,8 @@ export default defineConfig({
     starlight({
       title: 'Sumarizzerrrr',
       logo: {
-        src: './src/assets/logo.svg',
+        light: './src/assets/logo-light.svg',
+        dark: './src/assets/logo-dark.svg',
         replacesTitle: true,
       },
       customCss: [
@@ -25,6 +26,12 @@ export default defineConfig({
           href: 'https://github.com/withastro/starlight',
         },
       ],
+      components: {
+        // Override the default `SocialIcons` component.
+        PageTitle: './src/components/Empty.astro',
+        ContentPanel: './src/components/Empty.astro',
+        Header: './src/components/EmptyHeader.astro',
+      },
       plugins: [starlightThemeRapide()],
       sidebar: [
         {
