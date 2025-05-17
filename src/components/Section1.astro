@@ -1,10 +1,16 @@
 <div
-  class="h-screen flex flex-col gap-8 items-center justify-center text-center"
+  class="h-screen max-w-[92rem] px-32 min-h-[40rem] flex flex-col gap-8 items-center justify-center text-center"
 >
-  <h2 class="text-lg/8 text-white m-0 w-2xl">Comment Summarization</h2>
-  <div class="max-w-7xl relative md:text-xl m-0">
+  <h2 class="text-lg/8 flex flex-col text-white m-0 w-2xl">
+    Summarization <span class="text-gray-400">
+      Youtube Video with General & Chapters</span
+    >
+  </h2>
+  <div
+    class="w-full grid grid-cols-[2rem_1fr_2rem] grid-rows-[2rem_1fr_2rem] relative h-full md:text-xl m-0"
+  >
     <div
-      class="absolute right-0 z-10 border w-96 h-[42rem] bg-gray-900 shadow-2xl shadow-orange-950 border-gray-700 rounded-3xl p-1.5"
+      class="absolute right-0 z-10 border w-84 h-full max-h-[calc(100vh-100px)] bg-gray-900 shadow-2xl shadow-orange-950 border-gray-700 rounded-3xl p-1.5"
     >
       <div
         class="w-full h-full border bg-gray-950 border-gray-700 overflow-hidden rounded-2xl"
@@ -70,7 +76,7 @@
       </div>
     </div>
     <div
-      class="bg-gray-800 relative left-0 z-0 aspect-video w-6xl border rounded-3xl border-gray-700"
+      class="bg-gray-800 col-start-2 row-start-2 col-end-3 row-end-3 m-0 border rounded-3xl border-gray-700"
     >
     </div>
   </div>
