@@ -7,6 +7,10 @@
   font-family: 'Geist Mono Variable', monospace;
 }
 
+:root {
+  --color-primary: oklch(69.1% 0.1909 45.02);
+}
+
 @layer my-overrides {
   :root[data-theme='dark'] {
     --sl-hue-base: 45;

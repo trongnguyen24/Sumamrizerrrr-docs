@@ -27,7 +27,7 @@ export default defineConfig({
       ],
       components: {
         // Override the default `SocialIcons` component.
-        PageTitle: './src/components/Empty.astro',
+        PageTitle: './src/components/EmptyPageTitle.astro',
         ContentPanel: './src/components/Empty.astro',
         Header: './src/components/EmptyHeader.astro',
       },

@@ -2,18 +2,18 @@
   class="h-screen flex flex-col gap-8 items-center justify-center text-center"
 >
   <h2 class="text-lg/8 text-white m-0 w-2xl">Comment Summarization</h2>
-  <div class="max-w-2xl md:text-xl m-0">
+  <div class="max-w-7xl relative md:text-xl m-0">
     <div
-      class="border w-96 h-[42rem] bg-gray-900 shadow-2xl shadow-orange-950 border-gray-700 rounded-3xl p-1.5"
+      class="absolute right-0 z-10 border w-96 h-[42rem] bg-gray-900 shadow-2xl shadow-orange-950 border-gray-700 rounded-3xl p-1.5"
     >
       <div
         class="w-full h-full border bg-gray-950 border-gray-700 overflow-hidden rounded-2xl"
       >
-        <div class="grid grid-rows-[32px_10px_180px_10px_1fr] h-screen">
+        <div class="grid grid-rows-[32px_10px_180px_10px_1fr] h-full relative">
           <div class="flex m-0 justify-center items-center w-full h-full">
             <div class="text-gray-400">
-              <div class="line-clamp-1 text-[0.75rem] px-2">
-                Comment Summarization
+              <div class="line-clamp-1 text-[0.75rem] px-2 m-0">
+                Youtube tab title
               </div>
             </div>
           </div>
@@ -24,8 +24,35 @@
           </div>
 
           <div
-            class="flex m-0 font-mono flex-col gap-1 justify-center items-center"
+            class="flex m-0 font-geist flex-col gap-1 justify-center items-center"
           >
+            <button
+              class="p-4 pl-4 pr-6 overflow-hidden text-black bg-white flex items-center rounded-full gap-2 w-fit h-12"
+            >
+              <div class="size-6 m-0 text-[#f76b15]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M7.53 1.282a.5.5 0 0 1 .94 0l.478 1.306a7.5 7.5 0 0 0 4.464 4.464l1.305.478a.5.5 0 0 1 0 .94l-1.305.478a7.5 7.5 0 0 0-4.464 4.464l-.478 1.305a.5.5 0 0 1-.94 0l-.478-1.305a7.5 7.5 0 0 0-4.464-4.464L1.282 8.47a.5.5 0 0 1 0-.94l1.306-.478a7.5 7.5 0 0 0 4.464-4.464Z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="flex col-start-1 row-start-1 gap-px m-0">
+                <span>S</span>
+                <span>u</span>
+                <span>m</span>
+                <span>m</span>
+                <span>a</span>
+                <span>r</span>
+                <span>i</span>
+                <span>z</span>
+                <span>e</span>
+              </div>
+            </button>
           </div>
 
           <div
@@ -36,11 +63,15 @@
           <div>dsadasdad</div>
 
           <div
-            class="fixed bg-linear-to-t from-background to-background/40 bottom-0 mask-t-from-50% h-16 backdrop-blur-[2px] w-full z-30 pointer-events-none"
+            class="absolute bg-linear-to-t from-background to-background/40 bottom-0 mask-t-from-50% h-16 backdrop-blur-[2px] w-full z-30 pointer-events-none"
           >
           </div>
         </div>
       </div>
+    </div>
+    <div
+      class="bg-gray-800 relative left-0 z-0 aspect-video w-6xl border rounded-3xl border-gray-700"
+    >
     </div>
   </div>
 </div>

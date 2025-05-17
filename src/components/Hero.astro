@@ -2,23 +2,101 @@
 
 ---
 
+<script>
+  import { animate, stagger } from 'animejs'
+
+  // Define keyframes for .animae-text animation
+  const textAnimationKeyframes = {
+    translateY: [
+      { to: '-0.3rem', ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: '-0.3rem', ease: 'inQuad', duration: 3600 },
+      { to: 0, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 0, ease: 'inQuad', duration: 3600 },
+    ],
+    opacity: [
+      { to: 0, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 0, ease: 'inQuad', duration: 3600 },
+      { to: 1, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 1, ease: 'inQuad', duration: 3600 },
+    ],
+    rotateX: [
+      { to: 80, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 80, ease: 'inQuad', duration: 3600 },
+      { to: 0, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 0, ease: 'inQuad', duration: 3600 },
+    ],
+    filter: [
+      { to: 'blur(2px)', ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 'blur(2px)', ease: 'inQuad', duration: 3600 },
+      { to: 'blur(0px)', ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 'blur(0px)', ease: 'inQuad', duration: 3600 },
+    ],
+  }
+
+  // Define keyframes for .animae-text-2 animation
+  const text2AnimationKeyframes = {
+    opacity: [
+      { to: 0, ease: 'inQuad', duration: 400 },
+      { to: 1, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 1, ease: 'inQuad', duration: 2800 },
+      { to: 0, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 0, ease: 'inQuad', duration: 4000 },
+    ],
+    translateY: [
+      { to: '0.3rem', ease: 'inQuad', duration: 400 },
+      { to: 0, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 0, ease: 'inQuad', duration: 2800 },
+      { to: '0.3rem', ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: '0.3rem', ease: 'inQuad', duration: 4000 },
+    ],
+    rotateX: [
+      { to: 80, ease: 'inQuad', duration: 400 },
+      { to: 0, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 0, ease: 'inQuad', duration: 2800 },
+      { to: 80, ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 80, ease: 'inQuad', duration: 4000 },
+    ],
+    filter: [
+      { to: 'blur(2px)', ease: 'inQuad', duration: 400 },
+      { to: 'blur(0px)', ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 'blur(0px)', ease: 'inQuad', duration: 2800 },
+      { to: 'blur(2px)', ease: 'inQuad', duration: 400, delay: stagger(50) },
+      { to: 'blur(2px)', ease: 'inQuad', duration: 4000 },
+    ],
+  }
+  animate(document.querySelectorAll('.animae-text'), {
+    ...textAnimationKeyframes,
+    loop: true,
+  })
+
+  animate(document.querySelectorAll('.animae-text-2'), {
+    ...text2AnimationKeyframes,
+    loop: true,
+  })
+</script>
+
 <div
-  class="h-screen flex flex-col gap-8 items-center justify-center text-center bg-[url(/bg.webp)] bg-cover bg-no-repeat bg-center"
+  class="h-screen min-h-[40rem] px-4 flex flex-col gap-12 items-center justify-center text-center bg-[url(/bg.webp)] bg-cover bg-no-repeat bg-center m-0"
 >
-  <h1 class="text-6xl/16 font-bold text-white m-0">
-    Smart AI Summaries<br />to Save Your Time
-  </h1>
-  <p class="text-lg max-w-2xl md:text-xl text-gray-400 m-0">
-    Powerful AI extension for summarize YouTube videos, Reddit threads, Facebook
-    posts, e-commerce reviews, news articles, and much more.
-  </p>
+  <div class="flex flex-col gap-2 items-center justify-center text-center">
+    <h1
+      class="text-3xl/10 sm:text-5xl/12 xl:text-6xl/16 font-bold text-white m-0"
+    >
+      Smart AI Summaries<br />to Save Your Time
+    </h1>
+    <p class="sm:text-lg max-w-2xl md:text-xl text-gray-400 m-0 text-balance">
+      Powerful AI extension for summarize YouTube videos, Reddit threads,
+      Facebook posts, e-commerce reviews, news articles, and much more.
+    </p>
+  </div>
   <div>
     <div class="flex flex-col md:flex-row gap-4">
       <a
         href="#"
-        class="flex gap-1 justify-center items-center border border-gray-200 border-t-gray-50 bg-gray-200 text-gray-900 py-2 px-6 pl-5 rounded-full shadow-lg hover:bg-white hover:border-white transition duration-300"
+        class="flex gap-1.5 justify-center items-center bg-gray-100/90 text-gray-800 py-2 px-6 pl-5 shadow-[inset_0_1px_2px_#fff] rounded-full hover:bg-white transition duration-300"
       >
         <svg
+          class="w-6 h-6 text-gray-500"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -41,7 +119,34 @@
             d="M9.073 10.313a3.378 3.378 0 1 0 4.617-1.236a3.4 3.4 0 0 0-1.68-.452h-.002a3.37 3.37 0 0 0-2.935 1.688"
           ></path>
         </svg>
-        Install now
+        <div class="grid grid-cols-1 grid-rows-1 m-0">
+          <div class="flex col-start-1 row-start-1">
+            <span class="animae-text">I</span>
+            <span class="animae-text">n</span>
+            <span class="animae-text">s</span>
+            <span class="animae-text">t</span>
+            <span class="animae-text">a</span>
+            <span class="animae-text">l</span>
+            <span class="animae-text">l</span>
+            <span class="animae-text">&nbsp;</span>
+            <span class="animae-text">n</span>
+            <span class="animae-text">o</span>
+            <span class="animae-text">w</span>
+          </div>
+          <div class="flex col-start-1 row-start-1 m-0">
+            <span class="animae-text-2 opacity-0">I</span>
+            <span class="animae-text-2 opacity-0">n</span>
+            <span class="animae-text-2 opacity-0">s</span>
+            <span class="animae-text-2 opacity-0">t</span>
+            <span class="animae-text-2 opacity-0">a</span>
+            <span class="animae-text-2 opacity-0">l</span>
+            <span class="animae-text-2 opacity-0">l</span>
+            <span class="animae-text-2 opacity-0">&nbsp;</span>
+            <span class="animae-text-2 opacity-0">n</span>
+            <span class="animae-text-2 opacity-0">o</span>
+            <span class="animae-text-2 opacity-0">w</span>
+          </div>
+        </div>
       </a>
       <a
         href="#"
@@ -53,6 +158,23 @@
     <p class="font-geist text-xs text-gray-500">
       Free and open source, no sign-up required.
     </p>
+    <a
+      class="mx-auto mt-16 flex w-fit text-xs text-gray-300 px-3 py-1 border border-gray-700 hover:border-gray-500 rounded-full shadow-none shadow-amber-950 hover:shadow-lg transition duration-300"
+      href="/guides/example/"
+      >Learn Usage and Best Practices <span
+        ><svg
+          class="w-4 h-4 ml-1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            d="M6 12.4h12M12.6 7l5.4 5.4l-5.4 5.4"></path>
+        </svg></span
+      ></a
+    >
   </div>
 </div>
 
@@ -62,5 +184,10 @@
   }
   body {
     background-color: #070707;
+  }
+  .animae-text,
+  .animae-text-2 {
+    font-weight: 600;
+    text-shadow: 0 1px 0 rgba(255, 255, 255 0.75);
   }
 </style>
