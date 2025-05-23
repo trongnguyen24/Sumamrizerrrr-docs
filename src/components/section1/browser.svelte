@@ -2,7 +2,8 @@
   import { onMount } from 'svelte'
 
   import Content_1 from './content-youtube.svelte'
-  import { createTimeline, animate, onScroll, utils } from 'animejs'
+  import { createTimeline, animate, onScroll, utils, eases } from 'animejs'
+  import { getElementCoords } from './utils'
 
   import MousePointer from '../svgs/MousePointer.svelte'
   import SummarizeIcon from '../svgs/SummarizeIcon.svelte'
@@ -15,6 +16,7 @@
   import ForwardArrowIcon from '../svgs/ForwardArrowIcon.svelte'
   import RefreshIcon from '../svgs/RefreshIcon.svelte'
   import LockIcon from '../svgs/LockIcon.svelte'
+  import { get } from 'svelte/store'
 
   let browserContainer: HTMLElement
   let mousePointer: HTMLElement
@@ -29,8 +31,44 @@
   let reddit: HTMLElement
   let facebook: HTMLElement
   let amazon: HTMLElement
+  let mouseXY: { x: string; y: string } = { x: '0', y: '0' }
 
-  let isBrowser = false
+  function showBrowser() {
+    animate(browserContainer, {
+      opacity: [0, 1],
+      translateY: [80, 0],
+      scale: [0.85, 1],
+      duration: 800,
+      alternate: true,
+      easing: 'inOutQuad',
+    })
+  }
+
+  function showSidePanel() {
+    animate(sidePanel, {
+      width: ['0%', '100%'],
+      translateX: ['0', '-2px'],
+      padding: ['0', '6px'],
+      duration: 700,
+      alternate: true,
+      easing: 'inOutCubic',
+      delay: 400,
+      onComplete: () => mousetoButton(summarizeButton),
+    })
+  }
+
+  function mousetoButton(e: any) {
+    const { x, y } = getElementCoords(e, browserContainer)
+    mouseXY.x = `${x}px`
+    mouseXY.y = `${y}px`
+    animate(mousePointer, {
+      translateX: [0, x],
+      translateY: [0, y],
+      opacity: [0, 1],
+      duration: 1000,
+      easing: 'inOutCubic',
+    })
+  }
 
   onMount(() => {
     const tl = createTimeline({
@@ -39,13 +77,15 @@
         enter: '50% -20%',
       }),
     })
-    tl.add(browserContainer, {
-      opacity: [0.5, 1],
-      translateY: [50, 0],
-      scale: [0.9, 1],
-      duration: 1000,
+
+    animate(browserContainer, {
+      opacity: [0, 1],
+      translateY: [80, 0],
+      scale: [0.85, 1],
+      duration: 800,
       alternate: true,
-      ease: 'inOutQuad',
+      easing: 'inOutQuad',
+      onBegin: showSidePanel,
     })
   })
 </script>
@@ -58,75 +98,80 @@
   <div
     bind:this={mousePointer}
     id="mousePointer"
-    class="mouse-pointer text-orange-400 absolute"
+    class="mouse-pointer z-50 text-blue-500 absolute opacity-0 top-0 left-0 pointer-events-none"
   >
     <MousePointer />
   </div>
   <div
-    bind:this={sidePanel}
-    id="sidePanel"
-    class="col-start-3 row-start-1 col-end-5 row-end-4 right-0 z-10 border h-full min-w-[22rem] bg-gray-900 shadow-2xl shadow-orange-950 border-gray-700 rounded-3xl p-1.5"
+    class="col-start-3 row-start-1 col-end-5 row-end-4 min-w-[22rem] z-10 h-full flex justify-end overflow-hidden"
   >
     <div
-      class="w-full h-full border bg-gray-950 border-gray-700 overflow-hidden rounded-2xl"
+      bind:this={sidePanel}
+      id="sidePanel"
+      class=" border h-full bg-gray-900 w-0 shadow-2xl shadow-orange-950 border-gray-700 rounded-3xl overflow-hidden p-0 translate-x-0.5 relative"
     >
       <div
-        bind:this={mySidePanelContent}
-        id="mySidePanelContent"
-        class="grid grid-rows-[32px_10px_180px_10px_1fr] h-full relative"
+        class="w-full h-full border bg-gray-950 border-gray-700 overflow-hidden rounded-2xl"
       >
-        <div class="flex justify-center items-center w-full h-full">
-          <div class="text-gray-400">
-            <div id="top-title" class="line-clamp-1 text-[0.75rem] px-2">
-              Youtube - OpenAI Codex CLI
+        <div
+          bind:this={mySidePanelContent}
+          id="mySidePanelContent"
+          class="grid grid-rows-[32px_10px_180px_10px_1fr] h-full relative overflow-hidden"
+        >
+          <div class="flex justify-center items-center w-full h-full">
+            <div class="text-gray-400">
+              <div id="top-title" class="line-clamp-1 text-[0.75rem] px-2">
+                Youtube - OpenAI Codex CLI
+              </div>
             </div>
           </div>
-        </div>
 
-        <div
-          class="top-stripes flex justify-center items-center w-full h-full"
-        ></div>
-
-        <div class="flex font-geist flex-col gap-1 justify-center items-center">
-          <button
-            bind:this={summarizeButton}
-            id="summarize-button"
-            class="p-4 pl-4 pr-6 overflow-hidden text-black bg-white flex items-center rounded-full gap-2 w-fit h-12"
-          >
-            <div class="size-6 text-[#f76b15]">
-              <SummarizeIcon />
-            </div>
-            <div class="flex col-start-1 row-start-1 gap-px">
-              <span>S</span>
-              <span>u</span>
-              <span>m</span>
-              <span>m</span>
-              <span>a</span>
-              <span>r</span>
-              <span>i</span>
-              <span>z</span>
-              <span>e</span>
-            </div>
-          </button>
-        </div>
-
-        <div
-          class="top-stripes flex justify-center items-center w-full h-full"
-        ></div>
-
-        <div>
           <div
-            bind:this={contentSummary}
-            id="content-summary"
-            class="text-xs text-left px-4 py-8"
-          >
-            <Content_1 />
-          </div>
-        </div>
+            class="top-stripes flex justify-center items-center w-full h-full"
+          ></div>
 
-        <div
-          class="absolute bg-linear-to-t from-background to-background/40 bottom-0 mask-t-from-50% h-16 backdrop-blur-[2px] w-full z-30 pointer-events-none"
-        ></div>
+          <div
+            class="flex font-geist flex-col gap-1 justify-center items-center"
+          >
+            <button
+              bind:this={summarizeButton}
+              id="summarize-button"
+              class="p-4 pl-4 pr-6 overflow-hidden text-black bg-white flex items-center rounded-full gap-2 w-fit h-12"
+            >
+              <div class="size-6 text-[#f76b15]">
+                <SummarizeIcon />
+              </div>
+              <div class="flex col-start-1 row-start-1 gap-px">
+                <span>S</span>
+                <span>u</span>
+                <span>m</span>
+                <span>m</span>
+                <span>a</span>
+                <span>r</span>
+                <span>i</span>
+                <span>z</span>
+                <span>e</span>
+              </div>
+            </button>
+          </div>
+
+          <div
+            class="top-stripes flex justify-center items-center w-full h-full"
+          ></div>
+
+          <div>
+            <div
+              bind:this={contentSummary}
+              id="content-summary "
+              class="text-xs text-left px-4 py-8 hidden"
+            >
+              <Content_1 />
+            </div>
+          </div>
+          <div
+            class="absolute bg-linear-to-t rounded-b-2xl from-background to-background/40 bottom-0 mask-t-from-50% h-16 backdrop-blur-[2px] w-full z-30 pointer-events-none"
+          ></div>
+        </div>
       </div>
     </div>
   </div>

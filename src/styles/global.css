@@ -48,6 +48,8 @@
   --space-xl-2xl: clamp(1.5rem, 1.2033rem + 1.3187vw, 3rem);
   /* Space 2xl-3xl: 32px → 72px */
   --space-2xl-3xl: clamp(2rem, 1.5055rem + 2.1978vw, 4.5rem);
+
+  --fluid-380-500: clamp(23.75rem, 20.4635rem + 13.4831vw, 31.25rem);
 }
 
 @layer my-overrides {

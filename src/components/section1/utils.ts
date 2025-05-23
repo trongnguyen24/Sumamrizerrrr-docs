@@ -5,5 +5,8 @@ export function getElementCoords(element: HTMLElement, container: HTMLElement) {
   const relativeX = elementRect.left - containerRect.left
   const relativeY = elementRect.top - containerRect.top
 
-  return { x: relativeX, y: relativeY }
+  const centerX = relativeX + elementRect.width / 2
+  const centerY = relativeY + elementRect.height / 2
+
+  return { x: centerX, y: centerY }
 }
